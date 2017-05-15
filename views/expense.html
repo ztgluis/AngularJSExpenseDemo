@@ -1,0 +1,47 @@
+<h1>Expenses</h1>
+<div ng-controller="ExpensesCtrl">
+	<form name="newExpensesForm">
+	<fieldset>
+		<legend>Add a Expense</legend>
+		<table class="table table-bordered table-condensed">
+			<tr>
+				<td><input type="text"  ng-model="newMerchant" placeholder="Merchant" required></td>
+				<td><input type="number" ng-model="newTotal" placeholder="Total" required></td>
+				<td><input type="date" ng-model="newDate" required></td>
+				<td><input type="text" ng-model="newComment" placeholder="Comment" required></td>
+				<td><button type="button" ng-click="addExpense()" ng-disabled="newExpensesForm.$invalid">Add Expense</button></td>
+			</tr>
+		</table>
+	</fieldset>
+	</form>
+	<form name="currentExpensesForm">
+		<table class="table table-bordered table-condensed" >
+			<thead>
+			<tr>
+				<th>Merchant</th>
+				<th>Total</th>
+				<th>Date</th>
+				<th>Comment</th>
+				<th>Status</th>
+				<th>Remove</th>
+			</tr>
+			</thead>
+			<tbody>
+			
+			<tr ng-repeat="e in expenses">
+				<td><input type="text" ng-model="e.merchant" ng-readonly="e.status=='Reimbursed'" value="{{e.merchant}}" required></td>
+				<td><input type="number" ng-model="e.total" ng-readonly="e.status=='Reimbursed'" value="{{e.total}}" required></td>
+				<td><input type="date" ng-model="e.date" ng-readonly="e.status=='Reimbursed'" value="{{e.date}}" required></td>
+				<td><input type="text" ng-model="e.comment" ng-readonly="e.status=='Reimbursed'" value="{{e.comment }}" required></td>
+				<td>
+					<select ng-model="e.status" ng-disabled="currentExpensesForm.$invalid || e.status=='Reimbursed'" required> 
+						<option value="New">New</option>
+						<option value="Reimbursed" >Reimbursed</option>
+					</select>
+				</td>
+				<td><button type="button" ng-click="removeExpense($index)" ng-disabled="e.status=='Reimbursed'">Remove</button></td>
+			</tr>
+			</tbody>
+		</table>
+	</form>
+</div>

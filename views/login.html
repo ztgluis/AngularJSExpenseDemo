@@ -1,0 +1,18 @@
+<div class="login jumbotron center-block">
+	<h2>Login</h2>
+	<form name="loginForm" class="ng-scope ng-pristine ng-valid">
+		<div class="form-group">
+			<label for="username">Username</label>
+			<input type="text" class="form-control ng-pristine ng-valid" ng-model="username" placeholder="Username" required>
+		</div>
+		<div class="form-group">
+			<label for="password">Password</label>
+			<input type="password" class="form-control ng-pristine ng-valid" ng-model="password" placeholder="Password" required>
+		</div>
+		<br/>
+		<span ng-model="loginError" placeholder="Password">{{loginError}}</span>
+		<span ng-model="loggedUser" placeholder="Password">{{loggedUser}}</span>
+  <br/><br/>
+		<button type="submit" class="btn btn-default" ng-click="login(username, password)" ng-disabled="loginForm.$invalid">Submit</button>
+	</form>
+</div>

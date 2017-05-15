@@ -1,0 +1,17 @@
+﻿<!DOCTYPE html>
+<html ng-app="app">
+	<head>
+		<title>Expense Manager Application</title>
+		<link href="css/bootstrap.min.css" rel="stylesheet" />
+	</head>
+	<body>
+	<div ng-include="'templates/header.html'"></div>
+	<div>
+		<div ng-view></div>
+	</div>
+	<div ng-include="'templates/footer.html'"></div>
+	<script src="js/angular.min.js"></script>
+	<script src="js/angular-route.min.js"></script>
+	<script src="js/app.js"></script>
+	</body>
+</html>
